@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .menu {
+        display: flex;
+        flex-direction: row;
+      }
+      .subMenu {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+      .menu0 {
+        width: 406px;
+        height: 200px;
+        background-color: aqua;
+        display: block;
+      }
+      .menu1 {
+        width: 406px;
+        height: 200px;
+        background-color: rebeccapurple;
+        display: none;
+      }
+      .menu2 {
+        width: 406px;
+        height: 200px;
+        background-color: red;
+        display: none;
+      }
+      .menu3 {
+        width: 406px;
+        height: 200px;
+        background-color: blue;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="subMenu" onclick="changDisplay(0)">추천상품</div>
+      <div class="subMenu" onclick="changDisplay(1)">신상품</div>
+      <div class="subMenu" onclick="changDisplay(2)">베스트</div>
+      <div class="subMenu" onclick="changDisplay(3)">특가상품</div>
+    </div>
+    <div class="test menu0"></div>
+    <div class="test menu1"></div>
+    <div class="test menu2"></div>
+    <div class="test menu3"></div>
+
+    <script>
+      function changDisplay(n) {
+        var subArray = document.querySelectorAll(".test");
+        for (sub of subArray) {
+          sub.style.display = "none";
+        }
+        document.querySelector(".menu" + n).style.display = "block";
+      }
+    </script>
+  </body>
+</html>
