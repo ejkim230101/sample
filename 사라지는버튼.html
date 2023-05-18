@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .wrap {
+      margin: 0 auto;
+      width: 70%;
+      height: 1400px;
+      background-color: red;
+    }
+
+    #payBtn {
+      top: 1000px;
+      width: 100%;
+      height: 30px;
+      background-color: blue;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    #buyBtn {
+      margin: 0 auto;
+      width: 69%;
+      position: fixed;
+      left: 50%;
+      transform: translate(-50%, 0);
+      height: 30px;
+
+      bottom: 0;
+      background-color: black;
+      color: white;
+      text-align: center;
+      opacity: 1;
+    }
+
+    #hidden {
+      margin: 0 auto;
+      width: 70%;
+      height: 200px;
+      display: block;
+      background-color: aqua;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
+    <button onclick="func1()">사라지는 높이</button>
+    <div id="hidden"></div>
+    <div class="wrap">
+      <div id="payBtn">결제하기</div>
+      <div id="buyBtn">결제하기</div>
+    </div>
+    <script>
+      function func1() {
+        var hidden = document.getElementById("hidden");
+        if ((hidden.style.display = "block")) {
+          hidden.style.display = "none";
+        } else {
+          hidden.style.display = "block";
+        }
+      }
+      window.addEventListener("scroll", function () {
+        var fixedBtn = document.querySelector("#buyBtn"); //fixed 버튼
+        var payBtn = document.querySelector("#payBtn").offsetTop; //결제하기 버튼, 고정값 1008
+        var scroll = document.documentElement.scrollTop; //스크롤 내린 높이 304,
+        var window = document.documentElement.clientHeight; //화면 높이, 735고정
+        var height = document.querySelector("#buyBtn").clientHeight; //fixed 버튼 높이
+        if (payBtn < scroll + window - height) {
+          fixedBtn.style.opacity = "0";
+        } else {
+          fixedBtn.style.opacity = "1";
+        }
+      });
+    </script>
+  </body>
+</html>
